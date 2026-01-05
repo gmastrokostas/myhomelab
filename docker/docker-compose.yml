@@ -1,0 +1,43 @@
+version: '3.8'
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+  monitoring:
+    driver: bridge
+
+volumes:
+  portainer_data:
+
+services:
+  # Portainer - Container Management UI
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - frontend
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - portainer_data:/data
+    environment:
+      - TZ=${TZ:-UTC}
+
+  # Add more services here as needed
+  # Example service template:
+  # service-name:
+  #   image: image-name:tag
+  #   container_name: service-name
+  #   restart: unless-stopped
+  #   networks:
+  #     - backend
+  #   volumes:
+  #     - ./config:/config
+  #   environment:
+  #     - TZ=${TZ}
