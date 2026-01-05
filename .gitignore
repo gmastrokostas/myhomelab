@@ -1,0 +1,69 @@
+# Environment variables
+.env
+.env.local
+*.env
+
+# Secrets and sensitive data
+secrets/
+*.key
+*.pem
+*.crt
+*.p12
+credentials.yml
+vault-password.txt
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ansible
+*.retry
+.vault_pass
+ansible.cfg.local
+
+# Docker
+docker-compose.override.yml
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.Python
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log

@@ -1,0 +1,39 @@
+---
+- name: Initial server setup
+  hosts: homelab
+  become: yes
+  
+  tasks:
+    - name: Update apt cache (Debian/Ubuntu)
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+    
+    - name: Install basic packages
+      package:
+        name:
+          - vim
+          - git
+          - curl
+          - wget
+          - htop
+          - net-tools
+        state: present
+    
+    - name: Set timezone
+      timezone:
+        name: "{{ timezone | default('UTC') }}"
+    
+    - name: Configure firewall (UFW)
+      ufw:
+        state: enabled
+        policy: deny
+      when: ansible_os_family == "Debian"
+    
+    - name: Allow SSH through firewall
+      ufw:
+        rule: allow
+        port: "22"
+        proto: tcp
+      when: ansible_os_family == "Debian"
