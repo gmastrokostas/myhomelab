@@ -6,10 +6,9 @@ This directory contains Terraform configurations for provisioning homelab infras
 
 ```
 terraform/
-├── main.tf              # Main configuration
+├── main.tf              # Main configuration with provider setup
 ├── variables.tf         # Variable definitions
 ├── outputs.tf          # Output definitions
-├── providers.tf        # Provider configurations
 └── modules/            # Reusable modules
 ```
 
