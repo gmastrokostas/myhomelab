@@ -1,0 +1,4 @@
+---
+# tasks file for change-custom-settings
+- include_tasks: rename-mlnx-nics.yml
+  when: ('hacluster') in group_names

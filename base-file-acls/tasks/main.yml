@@ -1,0 +1,3 @@
+---
+# tasks file for file_acls
+- include_tasks: hacluster_acls.yml

@@ -1,0 +1,32 @@
+---
+# vars file for iscsi_setup
+haclusteriscsiservices:
+   - targetclid.service
+   - target
+
+clienthaclusteriscsiservices:
+   - iscsid.service
+
+initiatorpackages:
+   - iscsi-initiator-utils
+   - device-mapper-multipath
+
+
+enable_multpath: mpathconf --enable --with_multipathd y
+
+
+iscsdiscver_ntwrks:
+  - iscsiadm -m discovery -t sendtargets -p 192.168.2.60
+  - iscsiadm -m discovery -t sendtargets -p 192.168.2.61
+
+iscsilogin_ntwrk:
+  - iscsiadm -m node -T iqn.2003-01.org.linux-iscsi.storage.x8664:sn.a4b8e830576c -p 192.168.2.60 --login
+  - iscsiadm -m node -T iqn.2003-01.org.linux-iscsi.storage.x8664:sn.a4b8e830576c -p 192.168.2.61 --login
+
+verifysessions: iscsiadm -m session
+
+multipathceck: multipath -ll
+
+
+
+iqn: iqn.2003-01.org.linux-iscsi.storage.x8664:sn.a4b8e830576c

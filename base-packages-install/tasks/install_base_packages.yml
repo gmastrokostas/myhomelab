@@ -1,0 +1,36 @@
+---
+- name: Install base packages for all servers
+  package:
+    name: "{{item}}"
+    state: latest
+  loop: "{{base_packages}}"
+  #when: ('all') in group_names
+
+
+- name: Install OFED MLNX drivers on HPV servers only
+  package: 
+    name: "{{item}}"
+    state: latest
+  loop: "{{doca_ofed}}"
+  when: ('hpvs') in group_names
+
+
+- name: Install HACLUSTERING packages
+  block:
+  - name: Enable HACLUSTER Redhat repo
+    command: subscription-manager repos --enable=rhel-8-for-x86_64-highavailability-rpms
+    when: ('hacluster') in group_names
+
+  - name: Install HaClustering related packages
+    package:
+      name: "{{item}}"
+      state: latest
+    loop: "{{haclusterpackages}}"
+  when: ('hacluster') in group_names
+
+
+#- name: Enable Epel repo on all Redhat machines
+#  shell:  subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
+
+#- name: Install epel-release repo
+#  shell:  dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm

@@ -1,0 +1,20 @@
+server 0.pool.ntp.org iburst
+server 1.pool.ntp.org iburst
+server 2.pool.ntp.org iburst
+server 3.pool.ntp.org iburst
+
+# Allow the system clock to be stepped in the first three updates.
+makestep 1.0 3
+
+# Enable kernel synchronization of the real-time clock (RTC).
+rtcsync
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+
+# Save NTS keys and cookies.
+ntsdumpdir /var/lib/chrony
+
+#Allow network to sync ntp
+allow 192.168.0.0/24
+local stratum 10

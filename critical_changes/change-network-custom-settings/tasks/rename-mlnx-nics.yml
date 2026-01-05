@@ -1,0 +1,27 @@
+- name: Setup hacluster NIC name
+  block:
+  - name: Create network directory in /etc/systemd
+    file:
+      state: directory
+      path: /etc/systemd/network
+      owner: root
+      group: root
+
+  - name: Set ansible fact for mlnx pci bus
+    set_fact:
+      mlnx_pci_slot: "{{mlnx_pci_slot}}"
+
+  - debug:
+      msg: "{{mlnx_pci_slot}}" 
+    
+  - name: Transfer template file for custom link
+    template:
+      src: 10-custom-data.link.j2
+      dest: /etc/systemd/network/10-custom-data.link
+
+  - name: Reboot server
+    include_role:
+      name: reboot_servers
+  
+  when: "'hacluster' not in ansible_interfaces"
+

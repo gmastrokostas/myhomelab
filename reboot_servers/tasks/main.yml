@@ -1,0 +1,4 @@
+---
+# tasks file for reboot_servers
+- name: Reboot servers
+  reboot:

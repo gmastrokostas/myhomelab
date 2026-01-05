@@ -1,0 +1,5 @@
+---
+- name: Ensure access on all servers
+- name: Execute Server Data Collector
+- name: Load all facts
+- name: Check if all servers can connect to their repos

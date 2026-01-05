@@ -1,0 +1,10 @@
+---
+- name: Copy targetcli config file to iscsi server for ha-cluster
+  template:
+    src: saveconfig.j2
+    dest: /etc/target/saveconfig.json
+  notify:
+    - Restart-services-on-iscsi-server
+    - Restart-services-on-iscsi-clients
+
+

@@ -1,0 +1,8 @@
+---
+- name: Allow hacluster related services
+  firewalld:
+    service: "{{item}}"
+    permanent: true
+    state: enabled
+    zone: hacluster
+  loop: "{{haclusterservices}}"

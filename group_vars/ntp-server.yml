@@ -1,0 +1,15 @@
+timesync_ntp_servers:
+  - hostname: 0.pool.ntp.org
+    iburst: true
+  - hostname: 1.pool.ntp.org
+    iburst: true
+  - hostname: 2.pool.ntp.org
+    iburst: true
+  - hostname: 3.pool.ntp.org
+    iburst: true
+
+vars:
+  journald_persistent: true
+  journald_max_disk_size: 2048
+  journald_per_user: true
+  journald_sync_interval: 1

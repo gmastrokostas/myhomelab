@@ -1,0 +1,7 @@
+---
+# tasks file for services-mgt
+- include_tasks: enable-start-services.yml
+- include_tasks: iscsi-server-services.yml
+  when: ('iscsi-server') in group_names
+- include_tasks: enable-start-mail-services.yml
+  when: ('mailservers') in group_names

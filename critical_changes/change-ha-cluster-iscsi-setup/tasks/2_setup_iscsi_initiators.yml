@@ -1,0 +1,30 @@
+---
+- name: Make sure we have the needed packages on the initiator devices
+  package:
+    name: "{{item}}"
+    state: latest
+  loop: "{{initiatorpackages}}"
+
+- name: Enable Multipathing
+  command: "{{enable_multpath}}"
+
+- name: Enable multipathing service
+  service:
+    name: multipathd
+    state: started
+    enabled: yes
+
+- name: Discover iscsi targets
+  command: "{{item}}"
+  loop: "{{iscsdiscver_ntwrks}}"
+
+- name: Login to iscsi targets
+  command: "{{item}}"
+  loop: "{{iscsilogin_ntwrk}}"
+
+- name: Verify Sessions
+  command: "{{verifysessions}}"
+
+- name: Verify multipathing
+  command: "{{multipathceck}}"
+

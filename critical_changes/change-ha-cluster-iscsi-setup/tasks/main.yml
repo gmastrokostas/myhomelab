@@ -1,0 +1,6 @@
+---
+# tasks file for iscsi_setup
+- include_tasks: 1_setup_iscsi_server.yml
+  when: ('iscsi-server') in group_names
+- include_tasks: 2_setup_iscsi_initiators.yml
+  when: ('hacluster') in group_names

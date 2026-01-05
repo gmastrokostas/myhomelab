@@ -1,0 +1,6 @@
+- hosts: all
+  roles:
+    - role: critical_changes/change-ha-cluster-iscsi-setup
+      tags: change_ha_cluster_iscsi_setup
+    - role: critical_changes/change-network-custom-settings
+      tags: change_network_custom_settings

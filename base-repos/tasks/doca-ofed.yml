@@ -1,0 +1,8 @@
+- name: Add DOCA-OFED repo
+  yum_repository:
+    name: DOCA-OFED
+    description: MELNX-DOCA-OFED
+    baseurl: https://linux.mellanox.com/public/repo/doca/3.1.0/rhel8.10/x86_64/
+    file: MELNX-DOCA-OFED
+    enabled: 1
+    gpgcheck: 0

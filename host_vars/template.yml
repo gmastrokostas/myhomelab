@@ -1,0 +1,16 @@
+---
+vars:
+  network_connections:
+  # Create one ethernet profile and activate it.
+  # The profile uses automatic IP addressing
+  # and is tied to the interface by MAC address.
+  - name: enp1s0
+    state: up
+    type: ethernet
+    autoconnect: true
+    autoconnect_retries: 2
+    ip:
+      address:
+        - "xxx/24"
+        - "xxx/24"
+

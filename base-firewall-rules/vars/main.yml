@@ -1,0 +1,23 @@
+---
+# vars file for firewall-rules
+baseservices:
+ - ssh
+ - ntp
+ - smtp
+
+haclusterservices:
+ - high-availability
+ - http
+ - https
+
+storageservices:
+ - nfs
+ - mountd
+ - rpc-bind
+ - http
+ - https
+ - dhcp
+ - iscsi-target
+
+storageports:
+ - 20049

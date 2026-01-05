@@ -1,0 +1,71 @@
+---
+# vars file for packages_install
+base_packages:
+ - audit
+ - rsync
+ - vim
+ - nmap
+ - zip
+ - tcpdump
+ - bash-completion
+ - tmux
+ - wget
+ - curl
+ - tar
+ - unzip
+ - lsof
+ - net-tools
+ - bind-utils
+ - nmap-ncat
+ - traceroute
+ - iproute
+ - ethtool
+ - mtr
+ - dnsmasq
+ - iperf3
+ - firewalld
+ - policycoreutils-python-utils
+ - setroubleshoot
+ - sysstat
+ - dstat
+ - iotop
+ - numactl
+ - tuned
+ - perf
+ - strace
+ - lvm2
+ - xfsprogs
+ - nfs-utils
+ - iscsi-initiator-utils
+ - smartmontools
+ - parted
+ - gdisk
+ - sg3_utils
+ - man-pages
+ - man-db
+ - bind-utils
+ - pciutils
+ - usbutils
+ - sysfsutils
+ - logrotate
+ - cronie
+ - kernel-tools
+ - crash
+ - nc
+ - device-mapper-multipath
+ - iscsi-initiator-utils.i686  
+ - python3-pyudev
+ - python3-psutil
+ - net-tools
+ - bash-completion
+  
+doca_ofed:
+ - doca-ofed
+ - mlnx-fw-updater
+ - doca-extra
+
+haclusterpackages:
+ - pcs
+ - pacemaker
+ - fence-agents-all
+

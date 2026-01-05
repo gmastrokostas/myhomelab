@@ -1,0 +1,5 @@
+---
+# vars file for file_acls
+hacluster_log_files:
+  - "/var/log/pcsd/pcsd.log"
+  - "/var/log/cluster/corosync.log"

@@ -1,0 +1,40 @@
+---
+network_provider: nm
+network_connections:
+  # Create one ethernet profile and activate it.
+  # The profile uses automatic IP addressing
+  # and is tied to the interface by MAC address.
+  #
+  - name: enp4s0
+    state: up
+    type: ethernet
+    autoconnect: true
+    autoconnect_retries: 2
+    #interface_name: enp4s0
+    ip:
+      dns:
+        - 192.168.0.90
+        - 192.168.0.1
+      dns_search:
+        - koukla.lol
+      ipv4_ignore_auto_dns: true
+      address:
+        - "192.168.0.212/24"
+      gateway4: 192.168.0.1
+
+  - name: enp5s0f0
+    state: up
+    type: ethernet
+    autoconnect: true
+    autoconnect_retries: 2
+    #interface_name: enp5s0f0
+    ip:
+      ipv4_ignore_auto_dns: true
+      address:
+        - "192.168.2.60/26"
+        - "192.168.2.61/26"
+      route:
+        - network: 192.168.2.0
+          prefix:  26
+          gateway: 192.168.2.1
+

@@ -1,0 +1,16 @@
+---
+# handlers file for iscsi_setup
+- name: Restart-services-on-iscsi-server
+  service:
+    name: "{{item}}"
+    state: restarted
+    enabled: yes
+  loop: "{{haclusteriscsiservices}}"
+
+- name: Restart-services-on-iscsi-clients
+  service:
+    name: "{{item}}"
+    state: restarted
+    enabled: yes
+  loop: "{{clienthaclusteriscsiservices}}"
+

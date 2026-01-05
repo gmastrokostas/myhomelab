@@ -1,0 +1,7 @@
+---
+- name: Starting all baseline services
+  service:
+    name: "{{item}}"
+    state: started
+    enabled: yes
+  loop: "{{baseservices}}"

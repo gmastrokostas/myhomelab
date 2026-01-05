@@ -1,0 +1,5 @@
+- hosts: all
+  roles:
+    - role: DESTROY-HP-CLUSTER-ENV
+      tags: DESTROY_HP_CLUSTER_ENV
+      when: ('hacluster') in group_names

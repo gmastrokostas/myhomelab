@@ -1,0 +1,18 @@
+---
+# vars file for services-mgt
+baseservices:
+  - firewalld
+  - sshd
+  - iscsid.service
+  - crond
+  - chronyd
+  - rsyslog
+  - auditd
+  - dbus
+
+iscsiserverservices:
+  - targetclid.service
+  - target
+
+mailservices:
+  - postfix

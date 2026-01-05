@@ -1,0 +1,9 @@
+---
+# tasks file for firewall-rules
+- include_tasks: 0_base_services.yml
+
+- include_tasks: 1_hacluster_services.yml
+  when: ('hacluster') in group_names
+
+- include_tasks: 2_storage_services.yml
+  when: ('iscsi-server') in group_names

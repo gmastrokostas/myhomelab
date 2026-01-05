@@ -1,0 +1,9 @@
+---
+- name: Add Melanox repository
+  ansible.builtin.yum_repository:
+   name: MLNX_EN-5_Repository
+   description: MLNX_EN-5_Repository
+   baseurl: http://storage/repos/
+   file: MLNX_EN-5
+   gpgcheck: no
+   enabled: no

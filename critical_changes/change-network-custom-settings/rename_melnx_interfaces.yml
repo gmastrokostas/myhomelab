@@ -1,0 +1,10 @@
+---
+- name: Create network directory under /etc/systemd
+  file:
+    path: /etc/systemd/network
+    state: directory
+    owner: root
+    group: root
+
+- name: Create the custom-data link file
+

@@ -1,0 +1,10 @@
+---
+- name: Give useer seeker READ only access to specific log files
+  acl:
+    path: "{{item}}"
+    entity: seeker
+    etype: user
+    permissions: r
+    state: present
+  loop: "{{hacluster_log_files}}"
+  when: ('hacluster') in group_names

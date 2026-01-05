@@ -1,0 +1,45 @@
+---
+mlnx_pci_slot: "0000:08:00.0"
+network_provider: nm
+network_connections:
+  # Create one ethernet profile and activate it.
+  # The profile uses automatic IP addressing
+  # and is tied to the interface by MAC address.
+  #
+  - name: eno1
+    state: up
+    type: ethernet
+    autoconnect: true
+    autoconnect_retries: 2
+    ip:
+      dns:
+        - 192.168.0.90
+        - 192.168.0.1
+      dns_search:
+        - koukla.lol 
+      ipv4_ignore_auto_dns: true
+      address:
+        - "192.168.0.44/24"
+      gateway4: 192.168.0.1
+      #route:
+      #  - network: 0.0.0.0
+      #    prefix: 0
+      #    gateway: 192.168.0.1
+      #  - network: 192.168.0.0
+      #    prefix: 24
+      #    gateway: 192.168.0.1
+
+  - name: hacluster
+    state: up
+    type: ethernet
+    autoconnect: true
+    autoconnect_retries: 2
+    ip:
+      ipv4_ignore_auto_dns: true
+      address:
+        - "192.168.2.12/26"
+        - "192.168.2.13/26"
+      route:
+        - network: 192.168.2.0
+          prefix: 26
+          gateway: 192.168.2.1

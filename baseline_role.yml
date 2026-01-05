@@ -1,0 +1,29 @@
+- hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+  roles:
+    - role: critical_changes/change-network-custom-settings
+      tags: change_network_custom_settings
+    - role: rhel-system-roles.network
+      tags: rhel_system_roles_network
+    - role: base-repos
+      tags: base_yum_repos
+    - role: rhel-system-roles.timesync
+      tags: rhel_system_roles_timesync
+    - role: rhel-system-roles.journald
+      tags: rhel_system_roles_journald
+    - role: base-packages-install
+      tags: base_package_install
+    - role: critical_changes/change-ha-cluster-iscsi-setup
+      tags: change_ha_cluster_iscsi_setup
+    - role: base-ntp-servers
+      tags: base_ntp_servers
+    - role: rhel-system-roles.firewall
+      tags: rhel_system_roles_firewall
+    - role: base-services-mgt
+      tags: base_services_mgt
+    - role: base-file-acls
+      tags: base_file_acls
+    - role: base-firewall-rules
+      tags: base_firewall_rules

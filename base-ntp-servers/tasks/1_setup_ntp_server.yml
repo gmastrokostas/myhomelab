@@ -1,0 +1,6 @@
+---
+- name: Setup NTP server
+  template:
+    src: chrony.j2
+    dest: /etc/chrony.conf
+  when: ('ntp-server') in group_names

@@ -1,0 +1,78 @@
+---
+# tasks file for DESTROY-HP-CLUSTER-ENV
+#- name: Stop HA Cluster
+#  shell: pcs cluster stop --all
+#  when: inventory_hostname="hpv2"
+
+- name: Remove fence agents
+  package:
+    name: fence-agents-all
+    state: absent
+
+- name: Remove PCS
+  package:
+    name: pcs
+    state: absent
+
+- name: Remove pacemaker
+  package:
+    name: pacemaker
+    state: absent
+
+- name: Remove pacemaker directory
+  file:
+    path: /etc/pacemaker
+    state: absent
+
+- name: Remove corosync directory
+  file:
+    path: /etc/corosync/
+    state: absent
+
+#- name: Remove log dir for pacemaker
+#  file:
+#    path: /var/log/pacemaker
+#    state: absent
+
+#- name: Remove cluster log files
+#  file:
+#    path: /var/log/cluster
+#    state: absent
+
+#- name: Remove log dir for pcsd
+#  file:
+#    path: /var/log/pcsd
+#    state: absent
+
+- name: Remove cib  config files
+  file:
+    path: /var/lib/pacemaker/cib/
+    state: absent
+    #recurse: yes
+
+- name: Remove corosync lib files
+  file:
+    path: /var/lib/corosync/
+    state: absent
+    #recurse: yes
+
+- name: Remove corosync config files
+  file:
+    path: /etc/corosync/
+    state: absent
+    #recurse: yes
+
+- name: Deactivate stray lvm volumes
+  command: vgchange -an --noudevsync
+
+- name: Wipe any signatures from multipath device
+  command: wipefs -a /dev/mapper/MyClusterStorage
+
+- name: Inform kernel for above changes
+  command: partprobe /dev/mapper/MyClusterStorage
+
+- name: Restore original lvm.conf files
+  shell: cp -f /root/lvm.conf /etc/lvm/
+
+- name: Reboot servers
+  reboot:

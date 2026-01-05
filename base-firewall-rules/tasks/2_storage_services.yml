@@ -1,0 +1,25 @@
+---
+- name: Allow services related to server storage
+  firewalld:
+    service: "{{item}}"
+    permanent: true
+    state: enabled
+    zone: hacluster
+  loop: "{{storageservices}}"
+
+- name: Allow tcp ports related to server storage
+  firewalld:
+    port: "{{item}}/tcp"
+    permanent: true
+    state: enabled
+    zone: hacluster
+  loop: "{{storageports}}"
+
+- name: All udp ports related to server storage
+  firewalld:
+    port: "{{item}}/udp"
+    permanent: true
+    state: enabled
+    zone: hacluster
+  loop: "{{storageports}}"
+

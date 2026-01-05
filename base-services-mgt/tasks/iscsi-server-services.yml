@@ -1,0 +1,7 @@
+- name: Start services needed by iscsi server
+  service:
+    name: "{{item}}"
+    state: started
+    enabled: yes
+  loop: "{{iscsiserverservices}}"
+
