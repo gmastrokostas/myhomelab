@@ -24,12 +24,16 @@ This homelab setup provides a comprehensive infrastructure for self-hosting serv
 
 ### Prerequisites
 
+- Physical server or VM with minimum 8GB RAM, 4 CPU cores, 100GB storage
 - Docker and Docker Compose
-- kubectl (for Kubernetes deployments)
-- Ansible (for automation)
-- Terraform (for infrastructure provisioning)
+- Basic Linux command-line knowledge
+- Git
 
 ### Getting Started
+
+**For detailed setup instructions, see the [Getting Started Guide](docs/getting-started.md).**
+
+Quick setup:
 
 1. Clone this repository:
    ```bash
@@ -37,22 +41,19 @@ This homelab setup provides a comprehensive infrastructure for self-hosting serv
    cd myhomelab
    ```
 
-2. Copy the example environment file and configure:
+2. Copy and configure environment variables:
    ```bash
    cp .env.example .env
    # Edit .env with your specific settings
    ```
 
-3. Review the services inventory to understand available services:
+3. Deploy monitoring stack:
    ```bash
-   cat docs/services-inventory.md
-   ```
-
-4. Deploy services using Docker Compose:
-   ```bash
-   cd docker
+   cd monitoring
    docker-compose up -d
    ```
+
+4. Access Grafana at http://your-server-ip:3000 (default: admin/admin)
 
 ## 📦 Services
 
@@ -78,10 +79,13 @@ Each directory contains its own README with specific configuration instructions:
 
 Additional documentation can be found in the [docs](docs/) directory:
 
+- [Getting Started Guide](docs/getting-started.md) - **Start here!**
 - [Architecture Overview](docs/architecture.md)
 - [Network Configuration](docs/network.md)
 - [Backup Strategy](docs/backup.md)
+- [Security Best Practices](docs/security.md)
 - [Troubleshooting Guide](docs/troubleshooting.md)
+- [Services Inventory](docs/services-inventory.md)
 
 ## 🤝 Contributing
 
