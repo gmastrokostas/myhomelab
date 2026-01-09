@@ -1,2 +1,4 @@
 ---
 # tasks file for patching
+- include_tasks: 1_prepare_environment.yml
+- include_tasks: 2_patch_servers.yml

@@ -1,3 +1,53 @@
 ---
-- name: Reboot Servers
-- name: Check if
+#- name: Reboot Servers
+#  reboot:
+#    reboot_timeout: 500
+#    pre_reboot_delay: 2
+#    connect_timeout: 10
+#    test_command: uptime
+
+#- name: Check if there is a kernel update
+#  shell: dnf check-update kernel
+#  register: kernel_update_check
+
+- name: Check kernel
+  package:
+    name: kernel
+    state: latest
+  check_mode: True
+  register: kernel_check
+  changed_when: True
+
+- name: Update Kernel and Ofed process
+  block:
+  - name: Remove doca-ofed packages
+    package:
+      name: doca-ofed
+      state: absent
+  - name: Reboot servers
+    include_role:
+      name: reboot_servers
+  - name: Update kernel
+    package:
+      name: kernel
+      state: latest
+  - name: Reboot servers
+    include_role:
+      name: reboot_servers
+  - name: Install doca-ofed
+    package:
+      name: doca-ofed
+      state: latest
+  - name: Reboot servers
+    include_role:
+      name: reboot_servers
+  - name: Update OS packages
+    package:
+      name: *
+      state: latest
+  - name: Reboot Servers
+    include_role:
+      name: reboot_servers
+  when: kernel_check.results| default([]) | length > 0
+  check_mode: False
+
