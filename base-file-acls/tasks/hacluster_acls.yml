@@ -8,3 +8,4 @@
     state: present
   loop: "{{hacluster_log_files}}"
   when: ('hacluster') in group_names
+  ignore_errors: yes
