@@ -4,5 +4,5 @@
     service: "{{item}}"
     permanent: true
     state: enabled
-    zone: hacluster
+    zone: public
   loop: "{{haclusterservices}}"
