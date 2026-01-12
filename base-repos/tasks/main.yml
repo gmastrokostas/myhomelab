@@ -1,5 +1,6 @@
 ---
 # tasks file for repos
+- include_tasks: setup_rh_subscriptions.yml
 - include_tasks: melanox_repo.yml
 - include_tasks: doca-ofed.yml
 

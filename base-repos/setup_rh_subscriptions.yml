@@ -1,0 +1,6 @@
+---
+- name: Enable RedHat 8 Subscriptions
+  command: subscription-manager register --username gmastrokostas --password Suse2088833880! --force
+
+- name: Enable High Availability Repos for HPV
+  command: subscription-manager repos --enable=rhel-8-for-x86_64-highavailability-rpms

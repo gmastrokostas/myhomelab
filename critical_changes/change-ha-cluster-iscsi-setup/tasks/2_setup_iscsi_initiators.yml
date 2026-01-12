@@ -5,6 +5,27 @@
     state: latest
   loop: "{{initiatorpackages}}"
 
+- name: Copy initiator file to hpv2
+  template:
+    src: initiatorname.iscsi-hpv2
+    dest: /etc/iscsi/initiatorname.iscsi
+  when: inventory_hostname=='hpv2'
+  notify: Restart-services-on-iscsi-clients
+
+- name: Copy initiator file to hpv3
+  template:
+    src: initiatorname.iscsi-hpv3
+    dest: /etc/iscsi/initiatorname.iscsi
+  when: inventory_hostname=='hpv3'
+  notify: Restart-services-on-iscsi-clients
+
+- name: Copy initiator file to hpvi4
+  template:
+    src: initiatorname.iscsi-hpv4
+    dest: /etc/iscsi/initiatorname.iscsi
+  when: inventory_hostname=='hpv4'
+  notify: Restart-services-on-iscsi-clients
+
 - name: Enable Multipathing
   command: "{{enable_multpath}}"
 

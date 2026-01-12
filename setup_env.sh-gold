@@ -1,0 +1,42 @@
+#!/bin/bash
+clear
+
+sep="----------------------------------"
+
+echo $sep
+echo "Please enter Setup Type"
+echo $sep
+echo ""
+if [ $1 == "AA" ]; then
+    echo "You selected an ACTIVE ACTIVE Setup"
+    echo ""
+    echo "CRITICAL: I will now destroy the environment and recreate it as an ACTIVE ACTIVE Setup"
+    echo ""
+    echo "--Type YES or NO"
+    read confirm
+    if [ $confirm == "YES" ];  then 
+        echo "ANSIBLE ONE"
+    elif [ $confirm == "NO" ]; then 
+        echo "ANSIBLE TWO"
+    else
+        echo "WRONG INPUT"
+    fi;
+
+elif [ $1 == "AP" ]; then
+    echo "You selected an ACTIVE PASSIVE Setup"
+    echo ""
+    echo "CRITICAL: I will now destroy the environment and recreate it as an ACTIVE PASSIVE Setup"
+    echo ""
+    echo "--Type YES or NO"
+    read confirm
+    if [ $confirm == "YES" ];  then 
+        echo "ANSIBLE ONE"
+    elif [ $confirm == "NO" ]; then 
+        echo "ANSIBLE TWO"
+    else
+        echo "WRONG INPUT"
+    fi;
+
+else
+    echo "Invalid Selection. Please choose either AA or AP."
+fi
