@@ -29,6 +29,12 @@
   when: ('hacluster') in group_names
 
 
+- name: Install HP tools
+  package:
+    name: "{{item}}"
+    state: latest
+  loop: "{{hptools}}"
+  when: ('hpvs') in group_names
 #- name: Enable Epel repo on all Redhat machines
 #  shell:  subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
 

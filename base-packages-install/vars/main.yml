@@ -69,3 +69,6 @@ haclusterpackages:
  - pacemaker
  - fence-agents-all
 
+hptools:
+ - ilorest
+
