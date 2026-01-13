@@ -1,4 +1,9 @@
 ---
 # tasks file for reboot_servers
-- name: Reboot servers
+- name: Reboot Servers
   reboot:
+    reboot_timeout: 500
+    pre_reboot_delay: 2
+    connect_timeout: 10
+    test_command: uptime
+
