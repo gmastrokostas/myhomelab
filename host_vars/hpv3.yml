@@ -37,8 +37,8 @@ network_connections:
     ip:
       ipv4_ignore_auto_dns: true
       address:
-        - "192.168.2.12/26"
-        - "192.168.2.13/26"
+        - "192.168.2.15/26"
+        - "192.168.2.16/26"
       route:
         - network: 192.168.2.0
           prefix: 26

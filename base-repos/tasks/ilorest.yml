@@ -2,7 +2,7 @@
   yum_repository:
     name: HP-ILO-Rest
     description: HP ILO Rest Command Utility
-    baseurl: https://downloads.linux.hpe.com/SDR/repo/ilorest/rhel/dist_ver/arch/project_ver
+    baseurl: https://downloads.linux.hpe.com/SDR/repo/ilorest/rhel/8/x86_64/current/
     file: HP-ILORest
     enabled: 1
     gpgcheck: 0
