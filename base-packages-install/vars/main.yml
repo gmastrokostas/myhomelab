@@ -58,6 +58,7 @@ base_packages:
  - python3-psutil
  - net-tools
  - bash-completion
+ - postfix
   
 doca_ofed:
  - doca-ofed

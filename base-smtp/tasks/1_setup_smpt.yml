@@ -1,0 +1,12 @@
+---
+- name: Setting up template config files
+  template:
+    src: main.j2
+    dest: /etc/postfix/main.cf
+  register: postfix_config
+
+- name: Restart Postfix 
+  service:
+    name: postfix
+    state: restarted
+  when: postfix_config.changed

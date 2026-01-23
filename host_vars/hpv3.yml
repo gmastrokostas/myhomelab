@@ -16,7 +16,8 @@ network_connections:
         - 192.168.0.90
         - 192.168.0.1
       dns_search:
-        - koukla.lol 
+        - koukla.lol
+        - cluster.lol
       ipv4_ignore_auto_dns: true
       address:
         - "192.168.0.44/24"

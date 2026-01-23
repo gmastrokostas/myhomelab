@@ -1,0 +1,3 @@
+---
+# tasks file for base-smtp
+- include_tasks: 1_setup_smpt.yml 

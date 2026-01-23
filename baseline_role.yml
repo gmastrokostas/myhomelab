@@ -27,3 +27,5 @@
       tags: base_file_acls
     - role: base-firewall-rules
       tags: base_firewall_rules
+    - role: base-smtp
+      tags: base_smtp
