@@ -1,4 +1,13 @@
 ---
+
+- name: Update system to latest packages
+  package:
+    name: "*"
+    state: latest
+
+- name: Reboot servers
+  reboot:
+
 - name: Install base packages for all servers
   package:
     name: "{{item}}"
@@ -6,6 +15,9 @@
   loop: "{{base_packages}}"
   #when: ('all') in group_names
 
+
+- name: Reboot post base package install
+  reboot:
 
 - name: Install OFED MLNX drivers on HPV servers only
   package: 
@@ -35,6 +47,10 @@
     state: latest
   loop: "{{hptools}}"
   when: ('hpvs') in group_names
+
+
+- name: Final Reboot
+  reboot:
 #- name: Enable Epel repo on all Redhat machines
 #  shell:  subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
 

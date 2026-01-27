@@ -18,11 +18,11 @@
   register: kernel_check
   changed_when: True
 
-- name: Update Kernel and Ofed process
+- name: Update Kernel and ofed process
   block:
   - name: Remove doca-ofed packages
     package:
-      name: doca-ofed
+      name: doca-*
       state: absent
   - name: Reboot servers
     include_role:
@@ -35,9 +35,13 @@
     include_role:
       name: reboot_servers
   - name: Install doca-ofed
-    package:
-      name: doca-ofed
-      state: latest
+    dnf:
+      name: "{{item}}"
+      state: present
+    loop:
+      - doca-ofed
+      - mlnx-fw-updater
+      - doca-extra
   - name: Reboot servers
     include_role:
       name: reboot_servers
@@ -50,4 +54,3 @@
       name: reboot_servers
   when: kernel_check.results| default([]) | length > 0
   check_mode: False
-
