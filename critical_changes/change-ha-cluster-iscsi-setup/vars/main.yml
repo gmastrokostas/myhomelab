@@ -22,11 +22,12 @@ iscsdiscver_ntwrks:
 iscsilogin_ntwrk:
   - iscsiadm -m node -T iqn.2003-01.org.linux-iscsi.storage.x8664:sn.a4b8e830576c -p 192.168.2.60 --login
   - iscsiadm -m node -T iqn.2003-01.org.linux-iscsi.storage.x8664:sn.a4b8e830576c -p 192.168.2.61 --login
+  - iscsiadm -m node -T iqn.2003-01.org.linux-iscsi.storage.x8664:sn.9624ce1e4fa5 -p 192.168.2.60 --login
+  - iscsiadm -m node -T iqn.2003-01.org.linux-iscsi.storage.x8664:sn.9624ce1e4fa5 -p 192.168.2.61 --login
+
 
 verifysessions: iscsiadm -m session
 
 multipathceck: multipath -ll
-
-
 
 iqn: iqn.2003-01.org.linux-iscsi.storage.x8664:sn.a4b8e830576c

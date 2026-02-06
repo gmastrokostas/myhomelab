@@ -43,6 +43,12 @@
   command: "{{item}}"
   loop: "{{iscsilogin_ntwrk}}"
 
+- name: Reload iscsi initiator service
+  service:
+    name: iscsid.service
+    state: restarted
+    enabled: yes
+
 - name: Verify Sessions
   command: "{{verifysessions}}"
 

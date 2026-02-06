@@ -1,6 +1,7 @@
 ---
 # vars file for packages_install
 base_packages:
+ - mutt
  - audit
  - rsync
  - vim

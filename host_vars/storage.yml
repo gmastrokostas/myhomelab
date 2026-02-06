@@ -23,7 +23,7 @@ network_connections:
         - "192.168.0.212/24"
       gateway4: 192.168.0.1
 
-  - name: enp5s0f0
+  - name: enp5s0f0np0
     state: up
     type: ethernet
     autoconnect: true

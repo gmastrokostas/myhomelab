@@ -30,7 +30,7 @@
 - name: Install HACLUSTERING packages
   block:
   - name: Enable HACLUSTER Redhat repo
-    command: subscription-manager repos --enable=rhel-8-for-x86_64-highavailability-rpms
+    command: sudo subscription-manager repos --enable=rhel-9-for-x86_64-highavailability-rpms
     when: ('hacluster') in group_names
 
   - name: Install HaClustering related packages
