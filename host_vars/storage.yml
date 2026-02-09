@@ -21,6 +21,7 @@ network_connections:
       ipv4_ignore_auto_dns: true
       address:
         - "192.168.0.212/24"
+        - "192.168.0.213/24"
       gateway4: 192.168.0.1
 
   - name: enp5s0f0np0
