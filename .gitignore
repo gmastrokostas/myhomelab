@@ -1,1 +1,6 @@
 venv
+.venv
+*.log
+*.temp
+id_rsa
+id_rsa.*
