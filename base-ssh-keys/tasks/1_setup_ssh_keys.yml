@@ -1,0 +1,24 @@
+---
+- name: Create .ssh directory under user seeker
+  file:
+    path: /home/.ssh
+    state: directory
+    mode: 0700
+    owner: seeker
+    group: seeker
+
+- name: Copy the id_rsa key
+  copy:
+    src: id_rsa
+    dest: /home/seeker/.ssh/
+    owner: seeker
+    group: seeker
+    mode: 0600
+
+- name: Copy the id_rsa pub key
+  copy:
+    src: id_rsa.pub
+    dest: /home/seeker/.ssh
+    owner: seeker
+    group: seeker
+    mode: 0644

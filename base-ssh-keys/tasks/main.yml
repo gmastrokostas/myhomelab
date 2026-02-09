@@ -1,0 +1,3 @@
+---
+# tasks file for base-ssh-keys
+- include_tasks: 1_setup_ssh_keys.yml

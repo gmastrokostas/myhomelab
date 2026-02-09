@@ -29,3 +29,5 @@
       tags: base_firewall_rules
     - role: base-smtp
       tags: base_smtp
+    - role: base-ssh-keys
+      tags: base_ssh_keys
