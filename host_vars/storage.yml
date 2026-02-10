@@ -5,12 +5,12 @@ network_connections:
   # The profile uses automatic IP addressing
   # and is tied to the interface by MAC address.
   #
-  - name: enp4s0
+  - name: bridge0
     state: up
-    type: ethernet
+    type: bridge
     autoconnect: true
     autoconnect_retries: 2
-    #interface_name: enp4s0
+    interface_name: bridge0
     ip:
       dns:
         - 192.168.0.90
@@ -23,6 +23,13 @@ network_connections:
         - "192.168.0.212/24"
         - "192.168.0.213/24"
       gateway4: 192.168.0.1
+
+  - name: enp4s0
+    state: up
+    type: ethernet
+    interface_name: enp4s0
+    controller: bridge0
+    port_type: bridge
 
   - name: enp5s0f0np0
     state: up
