@@ -24,6 +24,15 @@
     package:
       name: doca-*
       state: absent
+  - name: Remove perftest and pacemaker packages
+    package:
+      name: "{{item}}"
+      state: absent
+    loop:
+      - pacemaker
+      - pacemaker-cli
+      - perftest
+
   - name: Reboot servers
     include_role:
       name: reboot_servers
@@ -34,6 +43,14 @@
   - name: Reboot servers
     include_role:
       name: reboot_servers
+  - name: Update OS packages
+    package:
+      name: "*"
+      state: latest
+  - name: Reboot servers
+    include_role:
+      name: reboot_servers
+  
   - name: Install doca-ofed
     dnf:
       name: "{{item}}"
@@ -43,13 +60,6 @@
       - mlnx-fw-updater
       - doca-extra
   - name: Reboot servers
-    include_role:
-      name: reboot_servers
-  - name: Update OS packages
-    package:
-      name: "*"
-      state: latest
-  - name: Reboot Servers
     include_role:
       name: reboot_servers
   when: kernel_check.results| default([]) | length > 0
